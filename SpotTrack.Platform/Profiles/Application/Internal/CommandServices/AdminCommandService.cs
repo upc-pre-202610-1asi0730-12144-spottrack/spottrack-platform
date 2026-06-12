@@ -25,7 +25,7 @@ public class AdminCommandService(
         if (await adminRepository.ExistsByEmailAsync(command.Email, cancellationToken))
             return Result<Admin>.Failure(
                 ProfilesError.EmailAlreadyRegistered,
-                localizer[nameof(ProfilesError.EmailAlreadyRegistered)]);
+                localizer[nameof(ProfilesError.EmailAlreadyRegistered), command.Email]);
 
         Admin admin;
         try

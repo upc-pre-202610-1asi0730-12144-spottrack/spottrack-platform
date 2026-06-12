@@ -25,7 +25,7 @@ public class ClientCommandService(
         if (await clientRepository.ExistsByEmailAsync(command.Email, cancellationToken))
             return Result<Client>.Failure(
                 ProfilesError.EmailAlreadyRegistered,
-                localizer[nameof(ProfilesError.EmailAlreadyRegistered)]);
+                localizer[nameof(ProfilesError.EmailAlreadyRegistered), command.Email]);
 
         Client client;
         try
