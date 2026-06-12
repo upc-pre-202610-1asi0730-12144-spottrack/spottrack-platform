@@ -1,3 +1,11 @@
+using SpotTrack.Platform.Profiles.Application.Acl;
+using SpotTrack.Platform.Profiles.Application.CommandServices;
+using SpotTrack.Platform.Profiles.Application.Internal.CommandServices;
+using SpotTrack.Platform.Profiles.Application.Internal.QueryServices;
+using SpotTrack.Platform.Profiles.Application.QueryServices;
+using SpotTrack.Platform.Profiles.Domain.Repositories;
+using SpotTrack.Platform.Profiles.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using SpotTrack.Platform.Profiles.Interfaces.Acl;
 using SpotTrack.Platform.Resources.Errors;
 using SpotTrack.Platform.Resources.Shared;
 using SpotTrack.Platform.Shared.Domain.Repositories;
@@ -99,7 +107,14 @@ builder.Services.AddSwaggerGen(options =>
 // Shared Bounded Context
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// Profiles Bounded Context (se agrega al construir el contexto)
+// Profiles Bounded Context
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<IClientCommandService, ClientCommandService>();
+builder.Services.AddScoped<IAdminCommandService, AdminCommandService>();
+builder.Services.AddScoped<IClientQueryService, ClientQueryService>();
+builder.Services.AddScoped<IAdminQueryService, AdminQueryService>();
+builder.Services.AddScoped<IProfilesContextFacade, ProfilesContextFacade>();
 
 // Routines Bounded Context (se agrega al construir el contexto)
 
