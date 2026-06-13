@@ -1,4 +1,5 @@
 using SpotTrack.Platform.Routines.Domain.Model.Commands;
+using SpotTrack.Platform.Routines.Domain.Model.Entities;
 using SpotTrack.Platform.Routines.Domain.Model.ValueObjects;
 
 namespace SpotTrack.Platform.Routines.Domain.Model.Aggregates;
@@ -11,7 +12,7 @@ public partial class Routine
     
     public ClientId ClientId { get; private set; }
 
-    public List<object> ExerciseBlocks { get; private set; } = new();
+    public List<ExerciseBlock> ExerciseBlocks { get; private set; } = new();
     
     private Routine(){ }
 
@@ -19,7 +20,7 @@ public partial class Routine
     {
         Name = new RoutineName(command.RoutineName);
         ClientId = new ClientId(command.ClientId);
-        ExerciseBlocks = new List<object>();
+        ExerciseBlocks = new List<ExerciseBlock>();
     }
 
 }
