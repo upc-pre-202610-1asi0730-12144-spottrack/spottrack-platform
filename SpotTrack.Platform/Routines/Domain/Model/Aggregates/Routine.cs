@@ -9,8 +9,8 @@ public partial class Routine
     public int Id { get; private set; }
     
     public RoutineName Name { get; private set; } = null!;
-    
-    public ClientId ClientId { get; private set; }
+
+    public ClientId ClientId { get; private set; } = null!;
 
     public List<ExerciseBlock> ExerciseBlocks { get; private set; } = new();
     
